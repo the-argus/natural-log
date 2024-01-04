@@ -59,10 +59,6 @@ pub fn build(b: *std.Build) !void {
         lib.step.dependOn(fmt.builder.getInstallStep());
         // add the path found earlier to our compilation flags
         lib.addIncludePath(.{ .path = fmt_include_path });
-
-        // install fmt include headers into out output headers, so that people
-        // linking us get access to fmt includes
-        lib.installHeadersDirectory(fmt_include_path, "");
     }
 
     try targets.append(lib);
